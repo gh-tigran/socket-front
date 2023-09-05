@@ -8,6 +8,10 @@ class Api {
   static get() {
     return api.get('/index');
   }
+
+  static login(data) {
+    return api.post('/users/login', data);
+  }
 }
 
 export default Api;
