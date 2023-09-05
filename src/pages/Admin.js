@@ -27,9 +27,7 @@ function Admin() {
           className={openDoors.includes(i.id) ? 'button_active' : 'button-85'}
           onClick={() => handleToggle(i.id)}
         >
-          {'Door '}
-          {i.id}
-          s
+          {`Door ${i.id} s`}
         </button>
       ))}
     </div>
