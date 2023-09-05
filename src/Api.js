@@ -8,10 +8,6 @@ class Api {
   static get() {
     return api.get('/index');
   }
-
-  static test() {
-    return api.get('/test');
-  }
 }
 
 export default Api;
