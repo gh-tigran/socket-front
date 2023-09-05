@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import {
+  BrowserRouter, Routes, Route, Navigate,
+} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Admin from './pages/Admin';
+import Public from './pages/Public';
+import { socketInit } from './store/actions/socket';
 
 function App() {
+  const dispatch = useDispatch();
+  const token = '21321321313';
+  useEffect(() => {
+    if (token) {
+      dispatch(socketInit({ token }));
+    }
+  }, [token]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/public" />} />
+        <Route path="/public" element={<Public />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
